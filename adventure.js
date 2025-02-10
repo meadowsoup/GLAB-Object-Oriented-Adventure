@@ -27,7 +27,7 @@ console.log("Sunny's companion Bane has:");
 adventurer.companion.companion.inventory.forEach(item => console.log(item));
 
 // dice roll testing
-console.log("Dice Roll");
+console.log("Dice Roll:");
 adventurer.roll();
 adventurer.roll(2);
 adventurer.roll(5);
@@ -54,6 +54,18 @@ sol.companion.companion = new Character("bane");
 sol.companion.companion.type = "dragon";
 sol.companion.companion.inventory = ["bowler hat", "sunglasses"];
 
+// log inventories & dice rolling
+console.log("Sol's bag:");
+sol.inventory.forEach(item => console.log(item));
+
+console.log("Dice Roll:");
+sol.roll();
+sol.companion.roll();
+sol.companion.companion.roll();
+
+console.log("bane has the following:");
+sol.companion.companion.inventory.forEach(item => console.log(item));
+
 class Character {
      constructor(name) {
           this.name = name;
@@ -73,6 +85,12 @@ class Adventurer extends Character {
                throw new Error(`${role} is not valid! Choose from: ${Adventurer.ROLES.join(", ")}`)
           }
 
-          this.role = role
+          this.role = role;
+          this.inventory.push("bedroll", "50 gold coins")
+     }
+
+     scout() {
+          console.log(`${this.name} is scouting the area...`);
+          this.roll();
      }
 }
