@@ -33,3 +33,18 @@ sol.companion.type = "slime";
 sol.companion.companion = new Character("bane");
 sol.companion.companion.type = "dragon";
 sol.companion.companion.inventory = ["bowler hat", "sunglasses"];
+
+class Adventurer extends Character {
+     constructor(name, role) {
+          super(name);
+          // adventurers have specialized roles.
+          this.role = role;
+          // every adventurer starts with a bed and 50 gold.
+          this.inventory.push("bedroll", "50 gold coins");
+     }
+     // Adventurers have the ability to scout ahead of them.
+     scout() {
+          console.log(`${this.name} is scouting ahead...`);
+          super.roll();
+     }
+}
