@@ -94,3 +94,15 @@ class Adventurer extends Character {
           this.roll();
      }
 }
+
+class Companion extends Character {
+     constructor(name, type) {
+          super(name);
+          this.type = type;
+     }
+     assist() {
+          console.log(`${this.name} the ${this.type} is assisting!`);
+          this.roll()
+     }
+}
+
