@@ -3,7 +3,7 @@ const adventurer = {
      name: "Sol",
      health: 25,
      inventory: ["sword", "potion", "artifact"],
-     companion: {        // object within object....
+     companion: {  // object within object....
           name: "sunny",
           type: "slime",
           companion: {
@@ -25,3 +25,11 @@ class Character {
           this.inventory = [];
      }
 }
+
+const sol = new Character("Sol");
+sol.inventory = ["sword", "potion", "artifact"];
+sol.companion = new Character("sunny");
+sol.companion.type = "slime";
+sol.companion.companion = new Character("bane");
+sol.companion.companion.type = "dragon";
+sol.companion.companion.inventory = ["bowler hat", "sunglasses"];
