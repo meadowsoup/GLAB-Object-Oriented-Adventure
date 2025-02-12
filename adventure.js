@@ -106,3 +106,15 @@ class Companion extends Character {
      }
 }
 
+const solAdv = new Adventurer("Sol", "Rune Master");
+solAdv.inventory.push("sword", "potion", "artifact");
+
+solAdv.companion = new Companion("sunny", "slime");
+
+solAdv.companion.companion = new Companion("bane", "dragon");
+solAdv.companion.companion.inventory.push("bowler hat", "sunglasses");
+
+console.log("Actions:");
+solAdv.roll();
+solAdv.scout();
+solAdv.companion.assist();
