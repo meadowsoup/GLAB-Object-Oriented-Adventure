@@ -118,3 +118,31 @@ console.log("Actions:");
 solAdv.roll();
 solAdv.scout();
 solAdv.companion.assist();
+
+// factories help created many adventurers of the same role using names instead of individual objects
+class AdventurerFactory {
+     constructor(role) {
+          if(!Adventurer.ROLES.includes(role)) {
+               throw new Error(`Incorrect role: ${role}`);
+          }
+
+          this.role = role;
+          this.adventurers = [];
+     }
+
+     generate(name) {
+          const newAdventurer = new Adventurer(name, this.role);
+          this.adventurers.push(newAdventurer);
+          return newAdventurer;
+     }
+
+     findByName(name) {
+          return this.adventurers.find(a => a.name === name);
+     }
+}
+
+const spiritFactory = new AdventurerFactory("Spirit Master");
+const solSpiritMaster = spiritFactory.generate("Sol");
+
+console.log("Adventurers Generated:");
+console.log(spiritFactory.adventurers);
