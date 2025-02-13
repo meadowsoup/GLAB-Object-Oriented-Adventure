@@ -146,3 +146,35 @@ const solSpiritMaster = spiritFactory.generate("Sol");
 
 console.log("Adventurers Generated:");
 console.log(spiritFactory.adventurers);
+
+class Adventurer extends Character {
+     constructor(name, role) {
+          super(name);
+          this.role = role;
+          this.inventory.push("bedroll", "50 gold coins");
+     }
+     
+     duel(opponent) {
+     console.log(`Duel begins: ${this.name} vs ${opponent.name}!`);
+     while (this.health > 50 && opponent.health > 50) {
+          let roll1 = Math.floor(Math.random() * 20) + 1;
+          let roll2 = Math.floor(Math.random() * 20) + 1;
+
+          if (roll1 > roll2) {
+               opponent.health--;
+          } else if (roll2 > roll1) {
+               this.health--;
+          }
+
+          console.log(`${this.name} (Health ${this.health}) vs ${opponent.name} (Health: ${opponent.health})`);
+     }
+     
+     console.log(`${this.health > 50 ? this.name : opponent.name} wins`);
+     }
+}
+
+const solDuel = new Adventurer("Sol", "Rune Master");
+const rival = new Adventurer("Rival", "Monarch");
+
+solDuel.duel(rival);
+
